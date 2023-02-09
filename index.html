@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map Method </title>
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/app.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+</head>
+<body>
+ 
+    <div class="container">
+        <h1 class="alert alert-info m-4"> Map Method</h1>
+        <hr>
+        <h3 class="alert alert-warning">1. </h3>
+        <p>
+            - usecase of Map method
+            <br>
+            - when You have to create / return a new array from given array with some operation on it
+            <br>
+            - array.map ( callbackfunction(para) { para >>  } );
+            <br>
+            - Higher Order function >> A function which accepts another function as a parameter / arguement
+            <br>
+            - callback functions >> a function which is used / passed as a paramter inside of another function
+
+            <br><br> 
+          
+
+            <b>*</b> Function, ForEach & Arrow function
+            <br>
+            --- Output -->
+                <script>
+
+                 let ages = [23,35,46,51,67,89];
+                 let doubleAges = [] ;
+                 
+                //  function double() {
+                //      for ( let i = 0; i < ages.length; i++ ) {
+                //         doubleAges.push( ages[i] * 2 );
+                //      }
+                //     }
+
+                // double();
+
+                // ages.forEach( function(age) {
+                //     doubleAges.push( age * 2 );
+                // } );
+
+                ages.forEach( (age) => { doubleAges.push( age * 2 ) } );
+
+                document.write(`Double Ages = ${ doubleAges } `);
+                   
+                </script>
+            <br>
+            <br>
+
+            <b>*</b> Map Method on Array
+            <br>
+            --- Output -->
+                <script>
+
+                 let nums = [300, 4000, 850, 50, 20, 890 ];
+
+                //  let doubleNums = nums.map( function(num) {
+                //     if ( num > 400 ) { 
+                //     return num * 2; 
+                //     } else {
+                //         return num;
+                //     }
+                //     } )  ;
+
+                let doubleNums = nums.map( num => { if( num > 400 ) { return num * 2; } else { return num } } );
+                
+
+                document.write(`Double = ${ doubleNums } `);
+                   
+                </script>
+            <br>
+            <br>
+
+            <b>*</b> forloop ,foreach, es6 & Map Method on an Array
+            <br>
+            --- Output -->
+                <script>
+
+                let marks = [78, 57, 81, 52, 64, 49 ];
+
+                // let sqrtMarks = [];
+                
+                // for ( let m=0; m < marks.length; m++ ){
+                //     sqrtMarks.push( Math.sqrt( marks[m] ) );
+                // }
+
+                // marks.forEach( function( mrk ) {
+                //     sqrtMarks.push( Math.sqrt(mrk) );
+                // } );
+
+                // marks.forEach ( mrk => sqrtMarks.push( Math.sqrt(mrk) ) );
+                
+                // let sqrtMarks = marks.map( function(mrk) {
+                //      return Math.sqrt(mrk); 
+                //     } );
+
+                // let sqrtMarks = marks.map( mrk => { return Math.sqrt(mrk) } );
+
+                let sqrtMarks = marks.map( mrk => Math.sqrt(mrk) );
+
+                document.write(`SqrtMarks = ${ sqrtMarks } `);
+                
+                </script>
+            <br>
+            <br>
+
+            <b>* - </b> Foreach & Map method on an array of objects to create a new array of objects
+            <br>
+            Output - --> 
+            
+            <script>
+
+            let companies = [
+                { name: "Company One", category: "Finance", start: 1981, end: 2003 },
+                { name: "Company Two", category: "Retail", start: 1992, end: 2008 },
+                { name: "Company Three", category: "Auto", start: 1999, end: 2007 },
+                { name: "Company Four", category: "Retail", start: 1989, end: 2010 },
+                { name: "Company Five", category: "Technology", start: 2009, end: 2014 },
+                { name: "Company Six", category: "Finance", start: 1987, end: 2010 },
+                { name: "Company Seven", category: "Auto", start: 1986, end: 1996 },
+                { name: "Company Eight", category: "Technology", start: 2011, end: 2016 },
+                { name: "Company Nine", category: "Retail", start: 1981, end: 1989 }
+            ];
+
+            // let newCompanies = [];
+
+            // for ( let i=0; i < companies.length; i++ ){
+            //     newCompanies.push( companies[i].name );
+            // }
+
+            // companies.forEach ( (nm) => { newCompanies.push( nm.name ) } )
+
+            let newCompanies = companies.map( (nm) => nm.name );
+
+            document.write(` <br> ${ newCompanies } `);
+
+            // let newStart = [];
+
+            // companies.forEach( (st) => newStart.push( { name : st.name, start : st.start } ) );
+
+            // newStart = companies.map( (st) => { return { name : st.name, start : st.start } } );
+
+            newStart = companies.map( (st) => ( { name : st.name, start : st.start } ) );
+            // in above example we had to keep () after arrow symbol => , cause if we don't add () then javaScript treats it as if it's the regular arrow function {} ( function(st) ''' {} ''  this one) so we kept it in the ().  
+
+            document.write(` <br> ${ newStart[4].name } | ${ newStart[4].start } `);
+
+            // let compDuration = [];
+            
+            // for ( let d=0; d < companies.length; d++ ) {
+            //     compDuration.push( { name : companies[d].name, duration : companies[d].end - companies[d].start } );
+            // }
+
+            // companies.forEach( dr => compDuration.push( { name : dr.name, duration : dr.end - dr.start } ) );
+
+            // let compDuration = companies.map( dr => { return { name : dr.name, duration : dr.end - dr.start } } );
+
+            let compDuration = companies.map( dr => ( { name : dr.name, duration : dr.end - dr.start } ) );
+
+            document.write(` <br> ${ compDuration[1].name } | ${ compDuration[1].duration } `);
+
+        //    let comPwd = [];
+
+        //    for ( z=0; z< companies.length; z++ ) {
+        //         comPwd.push( 
+        //                     { 
+        //                     name : companies[z].name, 
+        //                     pwd : ` ${ (companies[z].name).charAt(2) + companies[z].category.length  + (companies[z].category).substring(3,5) + (companies[z].category).indexOf("a") } ` 
+        //                      } 
+        //         );
+        //    }
+
+        // let comPwd = [];
+
+        // companies.forEach ( (cal) => { comPwd.push( { name : cal.name, pwd : ` ${ (cal.name)[3] + (cal.category.length) + (cal.category.substr(3,2) ) } ` } ) } );
+
+        let comPwd = companies.map( cal => { return { name : cal.name, pwd : `${ (cal.name[4]) + cal.category.length + (cal.category).substr(-4,2) }`  } } );
+
+        document.write(` <br> Pwds : ${ comPwd[0].name } - ${ comPwd[0].pwd } `);
+
+        </script>
+            
+            <br>
+            <br>
+
+
+        </p>
+        <br>
+        <h3 class="alert alert-warning">Assignment</h3>
+        <p>
+           --
+            <br>
+           
+            <b>Ex.1 -</b> Forloop, forEach, es6 & map method on a string Array
+            <br> let states = ['mh','gj','rj','dl','ka','tn','mp','wb','kl'];
+            <br>
+            Output - --> 
+            <script>
+              
+            let states = ['mh','gj','rj','dl','ka','tn','mp','wb','kl'];
+
+            // let newStates = [];
+
+            // for ( var s=0; s < states.length; s++ ) {
+            //     newStates.push(` ${ "I-".concat(states[s].toUpperCase()) } `);
+            // }
+
+            // states.forEach( function(s) {
+            //     newStates.push( ` ${ "I-".concat(s.toUpperCase()) }` );
+            // } );
+
+            // states.forEach( s => {
+            //     newStates.push(` ${ "I-".concat(s.toUpperCase()) } `);
+            // } );
+
+            // let newStates = states.map( function(s) {
+            //     return ` ${ "I-".concat( s.toUpperCase() ) } `;
+            // } );
+
+            let newStates = states.map( s => ` ${ "I-".concat( s.toUpperCase() ) } ` );
+
+            document.write(` ${ newStates } `);
+
+            </script>
+            <br>
+            <br>
+
+            <b>Ex.2 -</b> r of Circles & Area of Circles - Forloop, Foreach, es6 arrow, map method, map method in es6
+            <br>
+            let circles = [ 1, 40, 200, 1000 ];
+            <br>
+            Output - --> 
+            <script>
+              
+            let circles = [ 1, 40, 200, 1000 ];
+
+            // let areaCircles = [];
+
+            // for ( var r = 0; r < circles.length; r++ ) {
+            //     areaCircles.push( Math.PI * circles[r] * circles[r] ); // Pi * r * r
+            // }
+
+            // circles.forEach( function(r) {
+            //     areaCircles.push( Math.PI * r * r );
+            // } );
+
+            // circles.forEach ( r => areaCircles.push( Math.PI * r * r ) );
+
+            // let areaCircles = circles.map( function(r) { 
+            //     return Math.PI * r * r;
+            //  });
+
+            // let areaCircles = circles.map( r => { return Math.PI * r * r } );
+
+            let areaCircles = circles.map( r=> Math.PI * r * r )
+
+            document.write(` ${ areaCircles.join(" | ") } `);
+
+            </script>
+            <br>
+            <br>
+
+            <b>Ex.3 -</b> trying to use push on objects nested in an array
+            <br>
+            let numbers = [ { num1 : 1, num2 : 2  }, { num1 : 3, num2 : 6 }, { num1:7, num2 : 14} ];
+            <br>
+            Output - --> 
+            <script>
+              
+            let numbers = [ { num1 : 1, num2 : 2  }, { num1 : 3, num2 : 6 }, { num1:7, num2 : 14} ];
+
+            let squares1 = [];
+
+            // for( var n=0; n < numbers.length; n++ ) {
+            //     // squares.push( numbers[n].num1 * numbers[n].num2); >> output >> 2, 18, 98
+            //     squares.push( numbers[n].num1 * numbers[n].num1 );
+            //     squares.push( numbers[n].num2 * numbers[n].num2 );
+            // }
+
+            // numbers.forEach( function(n) {
+            //     squares.push( n.num1 * n.num1 );
+            //     squares.push( n.num2 * n.num2 );
+            // });
+            // output >> 1 | 4 | 9 | 36 | 49 | 196 >> a new array of 6 elements from current array of 3 elements
+            // possible in the usecase of 'for' / 'foreach' loop, but not possible in map method
+            
+            // numbers.forEach( function(n) {
+            //     squares.push( n.num1 * n.num1 );
+            //     squares.push( n.num2 * n.num2 );
+            // } );
+
+            numbers.forEach( n => { 
+                squares1.push( { num1 : n.num1 * n.num1, num2: n.num2 * n.num2 } );  
+                // squares1.push( n.num2 * n.num2 );
+            } );
+
+            // let squares2 = numbers.map( function(n) {
+            //     return n.num1 * n.num1, n.num2 * n.num2; // only one statm works when return is there
+            // });
+
+            let squares2 = numbers.map( n => { return { num1 : n.num1 * n.num1, num2: n.num2 * n.num2 } } );
+
+            // let squares2 = numbers.map( n => { return n });
+
+            // let squares = numbers.map( (n) => { return n.num1 * n.num1 }  ); >> 1 9 49
+            // let squares = numbers.map( (n) => { return n.num1 * n.num1; n.num2 * n.num2 } ); >> 1 9 49
+            // map method use returns so it will take only one statm into the execution which is written ahead of return
+            // let squares = numbers.map( (n) => { n.num1 = n.num1 * n.num1; n.num2 = n.num2 * n.num2 } );
+            // above statm won't work because map method returns the result & that is stored in new array 
+           
+            document.write(` ${ squares1.join(" | ") } `);
+            document.write(` ---- ${ squares2.join(" | ") } -- ${ squares2[1].num1 } `);
+
+            </script>
+            <br>
+            <br>
+            
+        </p>
+
+      
+    </div>
+
+
+</body>
+</html>
